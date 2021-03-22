@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace NuclearTest
 {
@@ -12,24 +15,27 @@ namespace NuclearTest
             public long? a;
             public long? b;
         }
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            var dt = "2020-01-07T06:23:20-4:00";
-            var dt1 = "2020-01-07T06:23:20";
+            //var text = File.ReadAllLines(@"C:\Users\simon.chen\Downloads\Telegram Desktop\admin_access.log");
 
-            Console.WriteLine(dt);
-            Console.WriteLine(DateTime.Parse(dt).ToString());
-            Console.WriteLine(DateTimeOffset.Parse(dt).DateTime.ToString());
-            Console.WriteLine(DateTime.Parse(dt1).ToString());
-            Console.WriteLine(DateTimeOffset.Parse(dt1).DateTime.ToString());
-
-
-
-            //var t = DateTimeOffset.FromUnixTimeMilliseconds(1575543425000).DateTime;
-            //Console.WriteLine(t.ToString("yyyy-MM-dd HH:mm:ss"));
-            //Console.WriteLine(t.ToString("D", CultureInfo.CurrentCulture));
+            //Console.WriteLine(string.Join("\n", text.Where(x => x.Contains("POST /login"))));
+            //Console.ReadLine();
+            //var test = new Test();
+            //try
+            //{
+            //    await test.Foo();
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e);
+            //}
+            Console.WriteLine(0.00000005000m.ToString());
+            Console.WriteLine(0.00000005000m.ToString("G29"));
+            Console.WriteLine((0.00000005000m/ 1.000000000000000000000000000000000m).ToString());
             Console.ReadLine();
         }
+
 
         #region End
         class test
@@ -274,5 +280,32 @@ namespace NuclearTest
             }
         }
         #endregion
+    }
+
+    class Test
+    {
+        public async Task Foo()
+        {
+            await Bar();
+
+            async Task Bar()
+            {
+                try
+                {
+                    await Task.Delay(5);
+                    var test = new string[] { };
+
+                    Console.WriteLine(test[2]);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    Console.WriteLine(new string('-', 15));
+                    throw;
+                }
+
+            }
+
+        }
     }
 }
